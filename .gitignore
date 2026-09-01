@@ -14,6 +14,7 @@ scripts/memory/project/src/pages/
 benchmark/projects/
 benchmark/results/
 test-results/
+*.log
 .turbo/
 .eslintcache
 .pnpm-store
