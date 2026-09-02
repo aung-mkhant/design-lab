@@ -12,5 +12,9 @@
   "type": "commonjs",
   "dependencies": {
     "astro": "^7.2.10"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1"
   }
 }

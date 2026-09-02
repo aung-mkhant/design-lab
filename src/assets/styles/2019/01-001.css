@@ -1,0 +1,26 @@
+/* Remedy */
+* {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+/* Colors */
+:root {
+  --cream: #f6efe5;
+  --faded-cream: #c0ae95;
+  --orange: #f2502a;
+  --light-grey: #bebdc2;
+  --dark-grey: #323232;
+}
+/* Layout */
+body {
+  background-color: var(--cream);
+}
+main {
+  display: grid;
+}
+div.container {
+  background-color: #e05c3a;
+}
+h1 {
+  background-color: var(--backgroundColor);
+}

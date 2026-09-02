@@ -1,9 +1,41 @@
 ---
-import MySiteLayout from "@layouts/MySiteLayout.astro";
-import "@styles/global.css";
----
- <MySiteLayout title="Home" description="Fruitiganza Home Page">
-  <h1>Welcome to My Astro Website</h1>
-  <p>This is the home page.</p>
-</MySiteLayout>
+import MySiteLayout from "@layouts/MySiteLayout.astro"
+import "@styles/index.css"
 
+const matches = import.meta.glob("./**/*.astro", { eager: true })
+const projects = Object.keys(matches).reduce(
+  (acc: Record<string, string[]>, path: string) => {
+    const year = path.split("/")[1]
+    const route =
+      "/design-lab" + path.replace("./", "/").replace(/\.astro$/, "")
+    if (!acc[year]) {
+      acc[year] = []
+    }
+    acc[year].push(route)
+    return acc
+  },
+  {}
+)
+console.log(projects)
+---
+
+<MySiteLayout title="Home" description="Fruitiganza Home Page">
+  <h1>Welcome AMK's Design Lab</h1>
+  <section>
+    <h2>Projects</h2>
+    {
+      Object.entries(projects).map(([year, routes]) => (
+        <div class="year-group">
+          <h3>{year}</h3>
+          <ul>
+            {routes.map(route => (
+              <li>
+                <a href={route}>{route.split("/")[3]}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+</MySiteLayout>
