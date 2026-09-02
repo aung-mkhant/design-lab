@@ -3,14 +3,17 @@ import { Image } from "astro:assets"
 import MySiteLayout from "@layouts/MySiteLayout.astro"
 import "@styles/2019/01-001.css"
 import buildingImage from "@images/2019/01-001/building.jpg"
-import logo from "@images/2019/01-001/logo.gif"
-import darkGreyPaper from "@images/2019/01-001/dark-grey-paper.gif"
 ---
 
 <MySiteLayout title="375 Park Ave" description="375 Park Ave">
   <main>
     <h1>375 PARK AVENUE</h1>
-    <Image src={buildingImage} alt="375 Park Avenue" loading="eager" />
+    <Image
+      src={buildingImage}
+      class="building"
+      alt="375 Park Avenue"
+      loading="eager"
+    />
     <p>
       For firms seeking a significant New York address, this 38-story,
       air-conditioned building, first ever to be sheathed in rich enduring
@@ -21,15 +24,19 @@ import darkGreyPaper from "@images/2019/01-001/dark-grey-paper.gif"
       for available upper floors of 11,500 to 13,000 sq. ft. each are not being
       considered for late 1957 occupancy. For descriptive brochure and plans,
       write: Renting and Managing Agent,
+      <span class="realtor">
+        <span class="realtor-logo">Cushman & Wakefield</span>
+        <span class="realtor-address"
+          >281 Madison Avenue, New York 17, N.Y.</span
+        >
+      </span>
     </p>
-    <Image src={logo} alt="logo" />
-    <p>281 Madison Avenue, New York 17, N.Y.</p>
 
     <footer>
       <span> being built by </span>
       <span class="seagram">THE HOUSE OF SEAGRAM</span>
     </footer>
 
-    <Image src={darkGreyPaper} alt="dark grey paper" />
+    <div class="grey-background"></div>
   </main>
 </MySiteLayout>
