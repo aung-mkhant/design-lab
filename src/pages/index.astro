@@ -1,17 +1,16 @@
 ---
 import MySiteLayout from "@layouts/MySiteLayout.astro"
-import "@styles/index.css"
 
 const matches = import.meta.glob("./**/*.astro", { eager: true })
 const projects = Object.keys(matches).reduce(
   (acc: Record<string, string[]>, path: string) => {
-    const year = path.split("/")[1]
+    const category = path.split("/")[1]
     const route =
       "/design-lab" + path.replace("./", "/").replace(/\.astro$/, "")
-    if (!acc[year]) {
-      acc[year] = []
+    if (!acc[category]) {
+      acc[category] = []
     }
-    acc[year].push(route)
+    acc[category].push(route)
     return acc
   },
   {}
@@ -19,22 +18,24 @@ const projects = Object.keys(matches).reduce(
 ---
 
 <MySiteLayout title="Home" description="Fruitiganza Home Page">
-  <h1>Welcome AMK's Design Lab</h1>
-  <section>
-    <h2>Projects</h2>
-    {
-      Object.entries(projects).map(([year, routes]) => (
-        <div class="year-group">
-          <h3>{year}</h3>
-          <ul>
-            {routes.map(route => (
-              <li>
-                <a href={route}>{route.split("/")[3]}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </section>
+  <body>
+    <h1>Welcome AMK's Design Lab</h1>
+    <section>
+      <h2>Projects</h2>
+      {
+        Object.entries(projects).map(([year, routes]) => (
+          <div class="year-group">
+            <h3>{year}</h3>
+            <ul>
+              {routes.map(route => (
+                <li>
+                  <a href={route}>{route.split("/")[3]}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section></body
+  >
 </MySiteLayout>
